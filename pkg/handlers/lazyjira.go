@@ -11,7 +11,8 @@ import (
 )
 
 func NewLazyJiraHandler(cmd *cobra.Command, args []string) error {
-	cfg, err := config.Load()
+	confServ := config.NewConfigService()
+	cfg, err := confServ.Load()
 	if err != nil {
 		return errors.New(fmt.Sprintf("Error loading configuration: %v", err))
 	}

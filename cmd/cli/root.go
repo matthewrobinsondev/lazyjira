@@ -13,6 +13,10 @@ var rootCmd = &cobra.Command{
 	RunE:  handlers.NewLazyJiraHandler,
 }
 
+func init() {
+	rootCmd.AddCommand(configCmd)
+}
+
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
